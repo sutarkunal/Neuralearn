@@ -24,6 +24,7 @@ import ResetPassword from "./Components/Auth/ResetPassword";
 
 import LearningModules from './Components/LearningModules/LearningModules';
 import StoryGeneration from "./Components/Story/StoryGeneration";
+import Chatbot from "./Components/Chatbot/Chatbot";
 import ModulesMaths from "./Components/LearningModules/ModulesMaths";
 import ModulesAlphabets from "./Components/LearningModules/ModulesAlphabets";
 import ModulesColors from "./Components/LearningModules/ModulesColors";
@@ -66,6 +67,8 @@ function App() {
           <Route path="/games/wordle" element={<WordleGame />} />
           <Route path="/games/memory-card" element={<MemoryGame />} />
           <Route path="/story" element={<StoryGeneration />} />
+          <Route path="/chatbot" element={<Chatbot />} />
+
 
           <Route path="/learning-modules" element={<LearningModules />} />
 

@@ -3,12 +3,16 @@ from pydantic import BaseModel
 import os
 from openai import OpenAI
 from route_profile import get_profile  # Assuming this dependency fetches the child's profile
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 story_router = APIRouter(tags=["Story"])
 
-HF_TOKEN = "YOUR_HF_TOKEN"
+HF_TOKEN = "" # os.getenv("NEURALEARN_STORY_GEN")
 if not HF_TOKEN:
-    raise RuntimeError("HF_TOKEN is not correct")
+    print("HF_TOKEN is not correct")
 
 client = OpenAI(
     base_url="https://router.huggingface.co/v1",

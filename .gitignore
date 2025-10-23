@@ -2,3 +2,5 @@ __pycache__/
 
 emotion-recognition/Datasets/
 emotion-recognition/Models/
+
+.env
