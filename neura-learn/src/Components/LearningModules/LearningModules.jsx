@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import './LearningModules.css';
 import VideoSection from './VideoSection';
+import TextToSpeech from "../TextToSpeech";
+
 
 function LearningModules() {
     return (
@@ -64,11 +66,7 @@ function LearningModules() {
 
                 </div>
 
-                <div id="feedback" className="feedback-message"></div>
 
-                <div className="progress">
-                    <div id="progressBar" className="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                </div>
             </div>
         </div>
 
@@ -79,10 +77,13 @@ export default LearningModules;
 
 function LearningModulesCard(props) {
 
+
     return (
         <div className="col-md-6 col-lg-3">
             <Link to={"/learning-modules/" + props.to} className="learning-modules-link">
-                <div className={props.divname}>
+                <div className={props.divname}
+                    onMouseEnter={() => TextToSpeech(props.title)}
+                    onMouseLeave={() => speechSynthesis.cancel()}>
                     {props.icons.map((icon, idx) => (
                         <i key={idx} className={"fas " + icon}></i>
                     ))}

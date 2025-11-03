@@ -35,15 +35,29 @@
   margin-bottom: 20px;
 }
 
+.card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+}
+
 .game-card a {
-  background-color: #4CAF50;
+  display: block;
+  background-color: #007bff; /* richer blue */
   color: #fff;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: bold;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.4);
 }
 
 .game-card a:hover {
-  background-color: #3e8e41;
+  background-color: #0056b3;
+  box-shadow: 0 6px 12px rgba(0, 86, 179, 0.6);
+  text-decoration: none;
 }

@@ -1,6 +1,7 @@
 import React, { useRef, useState, useCallback } from "react";
 import Webcam from "react-webcam";
 import axios from "axios";
+import TextToSpeech from "../../TextToSpeech";
 
 const CameraCard = ({cameraAnswer, setShowCamera, response, task, setAttempts, chapter, totalChapters, setShowResult}) => {
     const [cameraOn, setCameraOn] = useState(true);
@@ -42,7 +43,7 @@ const CameraCard = ({cameraAnswer, setShowCamera, response, task, setAttempts, c
             setEmotion(temp);
             console.log(cameraAnswer)
             if (temp.toLowerCase() === cameraAnswer.toLowerCase()){
-                alert("Correct Answer!!")
+                await TextToSpeech("Correct! Great job!", true);
                 setShowCamera(false)
                 if (chapter === totalChapters){
                     setShowResult(true)

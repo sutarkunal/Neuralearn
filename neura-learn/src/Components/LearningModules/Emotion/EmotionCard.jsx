@@ -1,8 +1,20 @@
 import NavigationButtons from "../NavigationButtons";
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import TextToSpeech from "../../TextToSpeech";
 
 const EmotionsCard = ({ title, chapter, desc, src, alt, task, answer = true, emotionAnswer }) => {
     const [userAnswer, setUserAnswer] = useState('');
+
+    // TTS Ref
+    const hasSpoken = useRef(false);
+
+    // TTS
+    useEffect(() => {
+        if(!hasSpoken.current && desc){
+        TextToSpeech(desc);
+        hasSpoken.current = true;
+        }
+    }, [desc]);
 
     const handleSubmit = () => {
         emotionAnswer(userAnswer);
