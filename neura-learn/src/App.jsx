@@ -13,9 +13,10 @@ import MainProfile from "./Components/Profile/MainProfile";
 import UpdateProfile from "./Components/Profile/UpdateProfile";
 
 import ChooseGames from "./Components/Games/ChooseGames";
-import GuessNumber from "./Components/Games/GuessNumber";
+import GuessNumber from "./Components/Games/GuessNumber/GuessNumber";
 import WordleGame from "./Components/Games/Wordle/WordleGame";
 import MemoryGame from "./Components/Games/Memory/MemoryGame";
+import ShapeDragDrop from "./Components/Games/ShapeDragDrop/ShapeDragDrop";
 
 import Login from "./Components/Auth/Login";
 import Signup from "./Components/Auth/Signup";
@@ -66,6 +67,7 @@ function App() {
           <Route path="/games/guess-number" element={<GuessNumber />} />
           <Route path="/games/wordle" element={<WordleGame />} />
           <Route path="/games/memory-card" element={<MemoryGame />} />
+          <Route path="/games/shape-drag-drop" element={<ShapeDragDrop />} />
           <Route path="/story" element={<StoryGeneration />} />
           <Route path="/chatbot" element={<Chatbot />} />
 

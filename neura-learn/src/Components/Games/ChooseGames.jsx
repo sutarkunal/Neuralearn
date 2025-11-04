@@ -1,54 +1,58 @@
 import { Link } from 'react-router-dom';
-import './ChooseGames.css'
+import './ChooseGames.css';
+
+function GameCard({ image, title, description, link }) {
+  return (
+    <div className="col-md-4 col-sm-6 mb-4">
+      <div className="game-card">
+        <img src={image} alt={title} className="img-fluid" />
+        <div className="card-content d-flex flex-column h-100">
+          <h3 className="text-center">{title}</h3>
+          <p className="text-center">{description}</p>
+          <Link className="btn btn-primary mt-auto" to={link}>Play Now!</Link>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function ChooseGames() {
-    return (
-        <section className="games-section py-5" style={{ backgroundImage: 'url(/Images/cloudStar.png)' }}>
+  return (
+    <section className="games-section py-5" style={{ backgroundImage: 'url(/Images/cloudStar.png)' }}>
+      <div className="container">
 
-            <div className="container">
-                <h1 className="text-center mb-4"><b>Fun Interactive Games</b></h1>
-                <div className="row justify-content-center">
-                <div className="col-md-4 col-sm-6 mb-4">
-                        <div className="game-card">
-                            <img src="/Images/wordleImg.png" alt="Game 1" className="img-fluid" />
-                            <div className="card-content">
-                                <h3 className="text-center">Wordle Game</h3>
-                                <p className="text-center">Guess the 5-letter word in 6 attempts or less.</p>
-                                <Link className="btn btn-primary btn-block" to="/games/wordle">Play Now!</Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4 col-sm-6 mb-4">
-                        <div className="game-card">
-                            <img src="Images/guessNo.jpg" alt="Game 1" className="img-fluid" />
-                            <div className="card-content">
-                                <h3 className="text-center">Guess the number</h3>
-                                <p className="text-center">Challenge your mind and guess the secret number! Improve your
-                                    problem-solving skills and logical thinking with this
-                                    fun and interactive game</p>
+        <h1 className="text-center mb-4 "><b>Fun Interactive Games</b></h1>
+        
+        <div className="row justify-content-center">
+          <GameCard
+            image="/Images/wordleImg.png"
+            title="Wordle Game"
+            description="Guess the 5-letter word in 6 attempts or less."
+            link="/games/wordle"
+          />
+          <GameCard
+            image="/Images/guessNumber.jpg"
+            title="Guess the Number"
+            description="Challenge yourself to guess the secret number and boost your problem-solving and logic skills!"
+            link="/games/guess-number"
+          />
+          <GameCard
+            image="/Images/memoryGame.png"
+            title="Memory Card Game"
+            description="Match identical cards to test your memory and concentration skills in this fun and challenging game."
+            link="/games/memory-card"
+          />
+        <GameCard
+            image="/Images/shapeDrag.jpg"
+            title="Shape Play"
+            description="Drag and drop colorful shapes to play and learn."
+            link="/games/shape-drag-drop"
+          />
 
-                                <Link className="btn btn-primary btn-block" to="/games/guess-number">Play Now!</Link>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-4 col-sm-6 mb-4">
-                        <div className="game-card">
-                            <img src="/Images/memory.png" alt="Game 1" className="img-fluid" />
-
-                            <div className="card-content">
-                                <h3 className="text-center">Memory card game</h3>
-                                <p className="text-center"> Match identical cards to test your memory and
-                                    concentration skills in this fun and challenging game.</p>
-                                    <Link className="btn btn-primary btn-block" to="/games/memory-card">Play Now!</Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    )
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default ChooseGames;
-

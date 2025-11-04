@@ -1,0 +1,422 @@
+.shapeDragDropRoot {
+  display: flex;
+  height: 100vh;
+  background: #F5F3F0;
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.shapeDragDropRoot * {
+  box-sizing: border-box;
+}
+
+/* Sidebars */
+.shapeSidebarLeft,
+.shapeSidebarRight {
+  width: 20%;
+  border: none;
+  padding: 30px 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin: 0;
+}
+
+.shapeSidebarLeft {
+  border-right: 3px solid #727272;
+  background: linear-gradient(180deg, #E8F8FF 0%, #E0F6FF 100%) !important;
+}
+
+.shapeSidebarRight {
+  border-left: 3px solid #727272;
+  background: linear-gradient(180deg, #E0F6FF 0%, #D8F2FF 100%) !important;
+}
+
+
+.shapeTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  color: #5A5450;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Shape Item Container */
+.shapeDragItem {
+  margin: 16px auto;
+  padding: 0;
+  cursor: grab;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+  width: 80px;
+  height: 80px;
+  background: #FEFCF9;
+  border: 2px dashed #B5A9A0;
+}
+
+.shapeDragItem svg {
+  width: 70px;
+  height: 70px;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.06));
+  transition: filter 0.3s ease;
+}
+
+.shapeDragItem::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: rgba(200, 180, 160, 0.1);
+  transition: all 0.3s ease;
+  border-radius: 16px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.shapeDragItem:hover::before {
+  opacity: 1;
+}
+
+.shapeDragItem:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.shapeDragItem:hover svg {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+}
+
+.shapeDragItem:active {
+  cursor: grabbing;
+  transform: translateY(-1px);
+}
+
+.shapeDragItem:active::before {
+  opacity: 0.6;
+}
+
+/* Canvas Container */
+.shapeCanvasWrapper {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #FAF8F5 0%, #F3EFEA 50%, #EBE5DE 100%);
+  padding: 40px;
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+}
+
+.shapeCanvasWrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 15% 30%, rgba(220, 200, 180, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 70%, rgba(200, 180, 210, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(210, 190, 170, 0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.shapeCanvasWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(200, 180, 160, 0.02) 0px,
+      rgba(200, 180, 160, 0.02) 1px,
+      transparent 1px,
+      transparent 2px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(180, 160, 140, 0.01) 0px,
+      rgba(180, 160, 140, 0.01) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.shapeCanvas {
+  border: 2px dashed #B5A9A0;
+  background-color: #FFFBF7;
+  cursor: grab;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.shapeCanvas:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border-color: #9D9189;
+}
+
+.shapeCanvas:active {
+  cursor: grabbing;
+}
+
+/* Control Buttons */
+.shapeControlPanel {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  display: flex;
+  gap: 14px;
+  z-index: 1000;
+  margin: 0;
+  padding: 0;
+}
+
+.shapeButtonRotate,
+.shapeButtonDelete,
+.shapeButtonReset,
+.shapeButtonUndo,
+.shapeButtonRedo {
+  padding: 12px 24px;
+  margin: 0;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.shapeButtonRotate::before,
+.shapeButtonDelete::before,
+.shapeButtonReset::before,
+.shapeButtonUndo::before,
+.shapeButtonRedo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  transition: left 0.4s ease;
+  z-index: -1;
+}
+
+.shapeButtonRotate:hover::before,
+.shapeButtonDelete:hover::before,
+.shapeButtonReset:hover::before,
+.shapeButtonUndo:hover::before,
+.shapeButtonRedo:hover::before {
+  left: 100%;
+}
+
+.shapeButtonRotate {
+  background: #A8C5D8;
+  color: white;
+}
+
+.shapeButtonRotate:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(168, 197, 216, 0.3);
+}
+
+.shapeButtonRotate:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.shapeButtonDelete {
+  background: #D4A5A5;
+  color: white;
+}
+
+.shapeButtonDelete:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(212, 165, 165, 0.3);
+}
+
+.shapeButtonDelete:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.shapeButtonReset {
+  background: #C4B8D8;
+  color: white;
+}
+
+.shapeButtonReset:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(196, 184, 216, 0.3);
+}
+
+.shapeButtonReset:active {
+  transform: translateY(-1px);
+}
+
+.shapeButtonUndo {
+  background: #B4C8D0;
+  color: white;
+}
+
+.shapeButtonUndo:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(180, 200, 208, 0.3);
+}
+
+.shapeButtonUndo:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.shapeButtonRedo {
+  background: #B4C8D0;
+  color: white;
+}
+
+.shapeButtonRedo:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(180, 200, 208, 0.3);
+}
+
+.shapeButtonRedo:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.shapeButtonRotate:disabled,
+.shapeButtonDelete:disabled,
+.shapeButtonUndo:disabled,
+.shapeButtonRedo:disabled {
+  background: #D4CCC0;
+  cursor: not-allowed;
+  color: #A89C90;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Scrollbar Styling */
+.shapeSidebarLeft::-webkit-scrollbar,
+.shapeSidebarRight::-webkit-scrollbar {
+  width: 8px;
+}
+
+.shapeSidebarLeft::-webkit-scrollbar-track,
+.shapeSidebarRight::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.shapeSidebarLeft::-webkit-scrollbar-thumb,
+.shapeSidebarRight::-webkit-scrollbar-thumb {
+  background: #D4CCC0;
+  border-radius: 4px;
+}
+
+.shapeSidebarLeft::-webkit-scrollbar-thumb:hover,
+.shapeSidebarRight::-webkit-scrollbar-thumb:hover {
+  background: #C8BCB0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .shapeDragDropRoot {
+    flex-direction: column;
+  }
+
+  .shapeSidebarLeft,
+  .shapeSidebarRight,
+  .shapeCanvasWrapper {
+    width: 100%;
+  }
+
+  .shapeSidebarLeft,
+  .shapeSidebarRight {
+    height: 160px;
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 1px solid #E8E4DF;
+    overflow-x: auto;
+    padding: 20px;
+  }
+
+  .shapeSidebarLeft {
+    border-right: none;
+  }
+
+  .shapeSidebarRight {
+    border-left: none;
+  }
+
+  .shapeCanvasWrapper {
+    padding: 20px;
+    min-height: 400px;
+  }
+
+  .shapeCanvas {
+    max-width: 100%;
+    max-height: 300px;
+  }
+
+  .shapeControlPanel {
+    bottom: 20px;
+    right: 20px;
+    gap: 10px;
+  }
+
+  .shapeButtonRotate,
+  .shapeButtonDelete,
+  .shapeButtonReset,
+  .shapeButtonUndo,
+  .shapeButtonRedo {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .shapeSidebarLeft::-webkit-scrollbar,
+  .shapeSidebarRight::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .shapeCanvasWrapper {
+    padding: 15px;
+  }
+
+  .shapeControlPanel {
+    bottom: 16px;
+    right: 16px;
+    gap: 8px;
+  }
+}
