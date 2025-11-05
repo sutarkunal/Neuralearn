@@ -207,17 +207,6 @@ Guidelines:
 
   return (
     <div className="chatbot-page">
-      {/* Hover Button */}
-      <div className="chatbot-hover-container">
-        <button
-          className="chatbot-hover-btn"
-          onClick={() =>
-            chatRef.current?.scrollIntoView({ behavior: "smooth" })
-          }
-        >
-          💬
-        </button>
-      </div>
 
       <div className="chatbot-container">
         {/* Top: Welcome + Pills */}

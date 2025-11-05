@@ -1,0 +1,81 @@
+/* Full-viewport wrapper */
+.shapesnap-root {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #0c0c0c;
+  overflow: hidden;
+}
+
+/* Loading overlay */
+.shapesnap-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: #0c0c0c; /* same as root for seamless look */
+  color: #fff;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  z-index: 10;
+  text-align: center;
+}
+
+/* Title / label */
+.shapesnap-loading__label {
+  font-size: 16px;
+  letter-spacing: 0.2px;
+  opacity: 0.9;
+}
+
+/* Progress shell */
+.shapesnap-progress {
+  width: min(320px, 80vw);
+  height: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+/* Progress fill */
+.shapesnap-progress__fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #7bff7b, #3cd63c);
+  transition: width 220ms ease;
+}
+
+/* Percentage text */
+.shapesnap-percent {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* Optional subtle pulsing dot */
+.shapesnap-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #7bff7b;
+  opacity: 0.8;
+  animation: shapesnap-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes shapesnap-pulse {
+  0%, 100% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1); opacity: 1; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .shapesnap-progress__fill { transition: none; }
+  .shapesnap-dot { animation: none; }
+}
+
+/* Hide the Unity canvas until ready to prevent flicker */
+.shapesnap-canvas--hidden {
+  display: none;
+}

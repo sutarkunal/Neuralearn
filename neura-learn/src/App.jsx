@@ -17,6 +17,7 @@ import GuessNumber from "./Components/Games/GuessNumber/GuessNumber";
 import WordleGame from "./Components/Games/Wordle/WordleGame";
 import MemoryGame from "./Components/Games/Memory/MemoryGame";
 import ShapeDragDrop from "./Components/Games/ShapeDragDrop/ShapeDragDrop";
+import ShapeSnap from "./Components/Games/ShapeSnap/ShapeSnap";
 
 import Login from "./Components/Auth/Login";
 import Signup from "./Components/Auth/Signup";
@@ -68,6 +69,7 @@ function App() {
           <Route path="/games/wordle" element={<WordleGame />} />
           <Route path="/games/memory-card" element={<MemoryGame />} />
           <Route path="/games/shape-drag-drop" element={<ShapeDragDrop />} />
+          <Route path="/games/shape-snap" element={<ShapeSnap />} />
           <Route path="/story" element={<StoryGeneration />} />
           <Route path="/chatbot" element={<Chatbot />} />
 

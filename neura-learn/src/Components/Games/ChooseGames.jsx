@@ -24,6 +24,25 @@ function ChooseGames() {
         <h1 className="text-center mb-4 "><b>Fun Interactive Games</b></h1>
         
         <div className="row justify-content-center">
+
+          <GameCard
+            image="/Images/shapeSnap.png"
+            title="Shape Snap Puzzle"
+            description="A fun drag-and-drop puzzle game where players match 3D shapes to their correct silhouettes."
+            link="/games/shape-snap"
+          />
+          <GameCard
+            image="/Images/shapeDrag.jpg"
+            title="Shape Play"
+            description="Drag and drop colorful shapes to play and learn."
+            link="/games/shape-drag-drop"
+          />
+          <GameCard
+            image="/Images/memoryGame.png"
+            title="Memory Card Game"
+            description="Match identical cards to test your memory and concentration skills in this fun and challenging game."
+            link="/games/memory-card"
+          />
           <GameCard
             image="/Images/wordleImg.png"
             title="Wordle Game"
@@ -36,18 +55,7 @@ function ChooseGames() {
             description="Challenge yourself to guess the secret number and boost your problem-solving and logic skills!"
             link="/games/guess-number"
           />
-          <GameCard
-            image="/Images/memoryGame.png"
-            title="Memory Card Game"
-            description="Match identical cards to test your memory and concentration skills in this fun and challenging game."
-            link="/games/memory-card"
-          />
-        <GameCard
-            image="/Images/shapeDrag.jpg"
-            title="Shape Play"
-            description="Drag and drop colorful shapes to play and learn."
-            link="/games/shape-drag-drop"
-          />
+
 
         </div>
       </div>
