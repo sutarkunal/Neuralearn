@@ -4,3 +4,5 @@ emotion-recognition/Datasets/
 emotion-recognition/Models/
 
 .env
+
+venv/

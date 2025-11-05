@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "aos": "^2.3.4",
     "axios": "^1.8.2",
     "bootstrap": "^5.3.8",
