@@ -10,6 +10,7 @@ from route_profile import profile_router
 from route_test import test_router
 from protected import protected_router
 from route_story import story_router
+from route_illustration import illustration_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -32,6 +33,7 @@ app.include_router(auth_router, prefix="/auth")
 app.include_router(emotion_router, prefix="/emotion")
 app.include_router(speech_router, prefix="/speech")
 app.include_router(story_router, prefix="/story")
+app.include_router(illustration_router, prefix="/images")
 app.include_router(profile_router)
 app.include_router(test_router)
 app.include_router(protected_router)
