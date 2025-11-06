@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import './LearningModules.css';
 import VideoSection from './VideoSection';
-import TextToSpeech from "../TextToSpeech";
+//import TextToSpeech from "../TextToSpeech";
 
 
 function LearningModules() {
@@ -81,9 +81,9 @@ function LearningModulesCard(props) {
     return (
         <div className="col-md-6 col-lg-3">
             <Link to={"/learning-modules/" + props.to} className="learning-modules-link">
-                <div className={props.divname}
-                    onMouseEnter={() => TextToSpeech(props.title)}
-                    onMouseLeave={() => speechSynthesis.cancel()}>
+                <div className={props.divname}>
+                    {/*onMouseEnter={() => TextToSpeech(props.title)}
+                    onMouseLeave={() => speechSynthesis.cancel()}*/}
                     {props.icons.map((icon, idx) => (
                         <i key={idx} className={"fas " + icon}></i>
                     ))}
